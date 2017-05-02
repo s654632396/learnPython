@@ -1,0 +1,178 @@
+python request库
+
+文档地址
+    http://docs.python-requests.org/en/master
+相关数据
+    Github Star : 24707
+    Pypi: 9k/month
+Kenneth Reitz:
+    http://www.kennethreitz.org/
+
+HTTP协议
+Request
+> GET / HTTP/1.1                start line 方法地址和协议
+> Host: www.imooc.com           Headers key-values
+> User-Agent: curl/7.47.0
+> Accept: */*
+
+Response
+< HTTP/1.1 200 OK
+< Server: nginx
+< Date: Sat, 29 Apr 2017 12:05:19 GMT
+< Content-Type: text/html; charset=utf-8
+< Transfer-Encoding: chunked
+< Connection: keep-alive
+< Vary: Accept-Encoding
+< Vary: Accept-Encoding
+< Set-Cookie: PHPSESSID=45bpsd3p2par4850mlsuhfop36; path=/
+< Expires: Thu, 19 Nov 1981 08:52:00 GMT
+< Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+< Pragma: no-cache
+< Set-Cookie: imooc_uuid=1220fb89-438a-4d51-aedd-723f3435a348; expires=Sun, 29-Apr-2018 12:05:18 GMT; path=/; domain=.imooc.com
+< Set-Cookie: imooc_isnew=1; expires=Sun, 29-Apr-2018 12:05:18 GMT; path=/; domain=.imooc.com
+< Set-Cookie: imooc_isnew_ct=1493467518; expires=Sun, 29-Apr-2018 12:05:18 GMT; path=/; domain=.imooc.com
+< Set-Cookie: cvde=5904817ea50b5-1; path=/; domain=.imooc.com
+<
+
+1. 使用 urllib
+urllib urllib2 urllib3是怎么样的关系
+    urllib & urllib2是相互独立的模块
+    requests使用了urllib3
+
+    ???
+    python3中已经统一只有一个urllib库了
+
+2. 使用 requests
+
+
+
+请求方法
+get         查看资源
+post        添加资源
+put/patch   修改资源
+delete      删除资源
+head        查看响应头
+options     查看可用请求方法
+
+
+1.url params参数
+    response = requests.get(url, params={'key1':'value1',})
+2.表单参数
+    Content-Type:application/x-www-form-urlencoded
+    body: key1=value1&key2=value2
+    response = requests.post(url, data={'key1':'value1','key2':'value2'})
+3.json参数
+    Content-Type:application/json
+    body: key1=value1&key2=value2
+    response = requests.post(url, json={'key1':'value1','key2':'value2'})
+
+Exception
+    BaseHttpError
+    ChuckedEncodingError
+    ConnectTimeout
+    ConnectionError
+    ContentDecodingError
+    HttpError
+    InvalidSchema
+    InvalidURL
+    MissingSchema
+    ProxyError
+    ReadTimeout
+    RequestException
+    RetryError
+    SSLError
+    StreamConsumedError
+    Timeout
+    TooManyRedirects
+    URLRequired
+
+Response
+    status_code reason
+    200         OK
+    201         Created
+    202         Accepted
+    203
+    204         No-Content
+    205         Reset-Content
+    206         Partial-Content
+    207
+    300         Multi-Choice
+    301
+    302
+    304         Not Modified
+    ...
+    307
+    400         Bad Request
+    401         Unauthorized
+    402
+    403         Forbidden
+    404         Not Found
+    405         Method Not Allowed
+    ...
+    500         Internal Server Error
+    501
+    502         Bad Gateway
+    ...
+
+status_code
+reason
+headers
+url
+history
+elapsed
+request
+
+encoding
+raw
+content     byte类型文档
+text        unicode类型文档
+
+
+Event Hook (事件钩子)
+
+HTTP 基本认证
+    auth=(username, password)
+
+OAUTH
+
+PROXY 代理
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

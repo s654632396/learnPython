@@ -1,0 +1,70 @@
+简单的爬虫架构
+
+爬虫的调度端---------------------------——|
+    |   ||                  ||          ||
+爬  | url管理器         url下载器       ||
+    |                                   ||
+虫  |    url解析器---------------------——|
+    |      |
+    |------价值数据
+
+
+
+1.防止重复抓取，循环抓取
+
+url管理器实现
+    内存 ---- set()数据结构
+    数据库--- mysql
+    缓存数据库---- redis---set
+
+网页下载器
+    urllib2  python内置
+    requests 第三方
+
+    urllib2下载情景处理，特殊情景处理器
+        HTTPCookieProcessor
+        ProxyHandler
+        HTTPSHandler
+        HTTPRedirectHandler
+            ||
+            \/
+        opener = urllib2.build_opener(handler)
+        urllib2.install_opener(opener)
+            ||
+            \/
+        urllib2.openurl(url)
+        urllib2.openurl(request)
+
+
+eg:
+    import urllib2, cookielib
+    # build cookie container
+    cj = cookielib.cookieJar()
+    # build one opener
+    opener= urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
+    # install opener for urllib2
+    urllib2.install_opener(opener)
+    # access website with urllib2 used cookie
+    response = urllib2.openurl('http://www.baidu.com/')
+
+
+网页解析器
+    从网页中提取有价值的数据的工具
+    类型：
+        模糊匹配：
+            正则表达式
+        结构化解析：
+            html.parser
+            Beautiful soup
+            lxml
+
+    结构化解析 --- DOM(Document Object Model) Tree
+
+
+
+
+
+
+
+
+

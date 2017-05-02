@@ -1,0 +1,73 @@
+python 访问db的官方接口规范
+python 开发db程序的开发环境
+python 访问db的connection/cursor两大对象
+python 执行curd
+
+DB API 类似 PHP的PDO数据库抽象层接口
+https://www.python.org/dev/peps/pep-0249/
+
+数据库的连接对象 connection
+数据库的交互对象 cursor
+数据库异常       exceptions
+
+执行流程
+--> 创建 connection
+--> 获取 cursor
+--> curd
+--> close cursor
+--> close connection
+
+python & mysql
+
+导入pymsql模块
+import pymysql
+
+创建connection
+connection = pymysql.Connect(host='127.0.0.1',
+                             user='appdev',
+                             password='123456',
+                             port=3316,
+                             db='pythondb',
+                             charset='utf8')
+connection.begin()
+# 使用该连接创建并返回游标
+cursor = connection.cursor()
+# 回滚
+connection.rollback()
+# 提交事务
+connection.commit()
+connection.close()
+
+
+cursor对象：用于执行sql和获取结果
+execute(op [,args])
+fetchone()
+fetchmany(size)
+fetchall()
+rowcount 最近一次execute执行影响的行数或者返回数据的行数
+close()
+
+fetch*() 方法：移动rownumber，返回数据
+
+
+transaction 访问和更新数据库的一个程序执行单元
+原子性 事务中的所有操作，要么全执行，要么全不执行
+一致性 事务必须使数据库从一个一致性的状态到另外一个一致性状态
+隔离性 一个事务的操作不能被其他事务干扰
+持久性 事务一旦提交，对数据库的改变就是永久的
+开发中使用事务
+关闭自动提交autocommit : conn.autocommit(False)
+正常结束的事务 : conn.commit()
+异常结束的事务 : conn.rollback()
+
+
+
+
+
+
+
+
+
+
+
+
