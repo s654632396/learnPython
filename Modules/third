@@ -1,0 +1,2 @@
+基本上，所有的第三方模块，都会在PyPI - the Python Package Index上regist
+只要找到对应的模块名称，就可以使用easy_install or pip 来install
