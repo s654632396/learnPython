@@ -1,0 +1,80 @@
+文件读取方式
+read([size])
+    读取文件，读取size个字节/byte，默认读取全部
+readline([size])
+    读取一行
+readlines([size])
+    读取完文件，返回每一行所组成的列表
+iter
+    使用迭代器操作文件
+
+文件写入
+write(str)
+    将字符串写入文件
+writelines(sequence_of_strings)
+    写多行到文件,参数为可迭代对象
+
+文件的打开方式
+r       只读方式打开          文件必须存在
+w       只写方式打开          文件不存在则创建/存在则清空文件内容
+a       追加方式打开          文件不存在则创建
+r+/w+   读写方式打开
+a+      追加和读写方式打开
+rb,wb,ab,rb+,wb,ab+ 二进制的方式打开
+
+写文件过程的问题
+    f.write(str) ---> systemcall kernel[文件缓存] ---> write to disk
+
+python 写入disk的时机
+1. 主动调用 close() 或者 flush方法， 写缓存同步到磁盘
+2. 写入的数据量 >= 写缓存， 写缓存会同步到磁盘(并释放缓存)
+
+python 操作文件指针
+seek(offset [, whence])
+    offset 偏移量，可以为负数
+    whence 偏移的相对位置
+os.SEEK_SET 相对文件起始位置 0
+os.SEEK_CUR 相对文件当前位置 1
+os.SEEK_END 相对文件结尾位置 2
+
+文件对象属性
+file.fileno() 文件描述符
+file.mode       文件打开权限
+file.encoding   文件编码格式
+file.closed     文件是否关闭
+
+标准文件
+文件标准输入 sys.stdin
+文件标准输出 sys.stdout
+文件标准错误 sys.stderr
+
+python 文件命令行参数
+sys模块提供了 sys.argv属性，通过该属性可以得到命令行参数
+sys.argv  字符串组成的列表
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
